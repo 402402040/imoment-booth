@@ -23,14 +23,7 @@ const App: React.FC = () => {
         >
           <Navbar />
         </Header>
-        <Content
-          style={{
-            marginTop: "2rem",
-            padding: "48px 48px",
-            height: "100vh",
-            overflow: "scroll",
-          }}
-        >
+        <Content className="mt-10 p-5 overflow-y-scroll h-screen justify-center lg:flex">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/order" element={<Order />} />

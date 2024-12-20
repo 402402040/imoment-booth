@@ -1,0 +1,200 @@
+body {
+  position: relative;
+}
+
+.logo {
+  padding: 32px 0;
+  position: relative;
+  width: 90%;
+  left: 5%;
+  z-index: 1;
+}
+
+.logo > img {
+  width: 136.5px;
+}
+
+h2 {
+  font-size: 27px;
+  font-weight: 500;
+}
+
+.main-container {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.calendar-container {
+  width: 100%;
+  position: relative;
+  margin-top: 30px;
+}
+
+.calendar-container > img {
+  width: 100%;
+  height: 100%;
+}
+
+.calendar-text-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+}
+
+.date-period {
+  font-size: 27px;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.date-select-container {
+  width: 100%;
+  height: 57%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.weekday-container,
+.date-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  place-items: center;
+}
+
+.weekday-container {
+  font-size: 19px;
+  color: #888888;
+}
+
+.date-container {
+  font-size: 30px;
+  color: #c8c9ca;
+}
+
+.date-container > span {
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.date-container > :first-child {
+  background-color: #000;
+}
+
+.alter-calendar-container {
+  margin-top: 30px;
+  width: 100%;
+  aspect-ratio: 600/283;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px #aaa solid;
+  border-radius: 5px;
+}
+
+.options-container {
+  height: 780px;
+  margin-top: 30px;
+  padding-top: 30px;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 100px;
+}
+
+.button-container > button {
+  max-width: 230px;
+  width: 100%;
+  font-size: 26px;
+  padding: 15px 0;
+  border-radius: 999px;
+  font-weight: 600;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.comfirm-button {
+  background-color: #eee058;
+  border: 2px #eee058 solid;
+}
+
+.cancel-button {
+  border: 2px #000 solid;
+}
+
+.top-bg-circle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 45%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.top-bg-circle > img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: -20%;
+  right: -40%;
+}
+
+.bottom-bg-circle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 45%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+
+.bottom-bg-circle > img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  bottom: -50%;
+  left: -45%;
+}
+
+@media screen and (max-width: 540px) {
+  h2 {
+    font-size: 21px;
+  }
+
+  .date-period {
+    font-size: 16px;
+  }
+
+  .weekday-container {
+    font-size: 14px;
+  }
+
+  .date-container {
+    font-size: 16px;
+  }
+
+  .button-container {
+    gap: 15px;
+  }
+
+  .button-container > a {
+    font-size: 16px;
+  }
+
+  .cancel-button {
+    border: 1px #000 solid;
+  }
+}

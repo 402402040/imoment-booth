@@ -1,31 +1,21 @@
 import React from "react";
-import { Menu } from "antd";
-import { Link, useLocation } from "react-router-dom";
-import { ItemType, MenuItemType } from "antd/es/menu/interface";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
-export const Navbar = (props: {}) => {
-    const location = useLocation();
-
-    const items: ItemType<MenuItemType>[] = [
-        {
-            key: "/",
-            label: <Link to="/">服務介紹</Link>,
-        },
-        {
-            key: "/order",
-            label: <Link to="/order">預約方式</Link>,
-        },
-    ];
-    return (
-        <>
-            <div className="demo-logo">imoment booth</div>
-            <Menu
-                theme="light"
-                mode="horizontal"
-                selectedKeys={[location.pathname]}
-                items={items}
-                style={{ flex: 1, minWidth: 0, maxWidth: "180px" }}
-            />
-        </>
-    );
+export const Navbar = () => {
+  return (
+    <div className="header">
+      <div className="logo">
+        <img src={logo} alt="" />
+      </div>
+      <nav>
+        <div style={{ zIndex: 1 }}>
+          <Link to="/">服務介紹</Link>
+        </div>
+        <div style={{ zIndex: 1 }}>
+          <Link to="/order">預約方式</Link>
+        </div>
+      </nav>
+    </div>
+  );
 };

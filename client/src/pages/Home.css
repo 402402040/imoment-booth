@@ -1,0 +1,113 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: #f7f7f7;
+  padding: 30px 80px 30px 30px;
+}
+
+.header img {
+  width: 70%;
+}
+
+img {
+  width: 100%;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  min-width: 140px;
+}
+
+nav > div {
+  cursor: pointer;
+}
+
+#introduction-anchor {
+  position: absolute;
+  width: 100%;
+  top: 46%;
+}
+
+.bg-img {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0;
+}
+
+.bg-img_title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-img_title div {
+  width: 150px;
+}
+
+.bg-img_title img {
+  width: 100%;
+}
+
+.bg-img_item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px;
+  line-height: 1.5;
+}
+
+.bg-img_item p {
+  min-width: 288px;
+  margin-left: 15px;
+}
+
+#reservation-anchor {
+  position: absolute;
+  width: 100%;
+  top: 40%;
+}
+
+.btn {
+  border: 2px solid black;
+  border-radius: 50px;
+  max-width: 210px;
+  padding: 15px 40px;
+  margin: auto;
+  font-size: 20px;
+  text-align: center;
+}
+
+.address {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+}
+
+.address h2,
+.address p {
+  font-size: 30px;
+  font-weight: normal;
+  margin-bottom: 50px;
+  line-height: 1.5;
+}
+
+footer {
+  background: #eee058;
+  padding: 40px 50px 70px 60px;
+  color: #9e9e9f;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 500px) {
+  address h2,
+  .address p {
+    font-size: 20px;
+    font-weight: normal;
+  }
+}

@@ -1,7 +1,10 @@
 package server
 
 import (
+	"encoding/base64"
+	"fmt"
 	"imoment-booth/internal/models"
+	"imoment-booth/internal/qrcode"
 	"net/http"
 	"time"
 
@@ -22,7 +25,25 @@ func (s *Server) CreateOrder(c *gin.Context) {
 		return
 	}
 
-	c.JSON(http.StatusOK, gin.H{"message": "create success"})
+	jsonContent := createQRcodeContent(order)
+	qrCodeData, err := qrcode.GenerateQrcode(jsonContent)
+	if err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to create QR Code to database"})
+		return
+	}
+	qrCode := models.QRCode{
+		Content: jsonContent,
+		Image:   qrCodeData,
+	}
+	if err := s.db.Create(&qrCode).Error; err != nil {
+		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to save QR Code to database"})
+		return
+	}
+
+	qrCodeBase64 := "data:image/png;base64," + base64.StdEncoding.EncodeToString(qrCodeData)
+	c.JSON(http.StatusOK, gin.H{
+		"Data": qrCodeBase64, // 返回 base64 編碼的 QR code
+	})
 }
 
 func (s *Server) GetAvaliableOrderTime(c *gin.Context) {
@@ -45,4 +66,16 @@ func (s *Server) GetAvaliableOrderTime(c *gin.Context) {
 	}
 
 	c.JSON(http.StatusOK, gin.H{"avaliable_time": avaliableTime})
+}
+
+func createQRcodeContent(order models.Order) string {
+	return fmt.Sprintf(
+		`
+		 {
+		  "username": %s,
+		  "order_date" %s,
+		  "start_time": %d,
+		  "end_time": %d
+		 }
+		`, order.Username, order.OrderDate, order.OrderStartTime, order.OrderEndTime)
 }

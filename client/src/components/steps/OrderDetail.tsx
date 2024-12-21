@@ -40,7 +40,6 @@ export const OrderDetail = ({
         });
         return;
       }
-
       const json = await response.json();
       console.log(json);
       messageApi.open({
@@ -48,8 +47,15 @@ export const OrderDetail = ({
         content: "預約成功！",
       });
 
-      // TODO: 把拿到的 qrcode 放這邊
-      onFinish("<qrcode url>");
+      if (json.Data) {
+        console.log("QR Code base64:", json.Data);
+        onFinish(json.Data); // Pass the base64 string to parent
+      } else {
+        messageApi.open({
+          type: "error",
+          content: "QR code 未生成！請稍候重新再試一次",
+        });
+      }
     } catch (e) {
       messageApi.open({
         type: "error",

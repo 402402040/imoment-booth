@@ -30,7 +30,7 @@ export const Order = (props: {}) => {
     order_start_time: 0,
     order_end_time: 0,
   });
-  const [qrCodeUrl, setQrCodeUrl] = useState("");
+  const [qrCodeUrl, setQrCodeUrl] = useState<string>("");
 
   const handleUserInfoFinish = (userInfo: UserInfo) => {
     const orderInfo: OrderInfo = {

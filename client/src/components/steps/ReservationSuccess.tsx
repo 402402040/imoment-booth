@@ -24,7 +24,12 @@ export const ReservationSuccess = (props: { qrCodeUrl: string }) => {
               <br />
             </p>
           </div>
-          <div className="qr-code"></div>
+          <div className="qr-code">
+          <img
+              src={props.qrCodeUrl}  // 直接使用傳遞進來的 Base64 字串
+              alt="QR Code"
+            />
+          </div>
           <div className="button-container">
             <button className="comfirm-button">
               <Link to="/">完成</Link>

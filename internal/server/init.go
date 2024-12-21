@@ -5,7 +5,7 @@ import (
 	"imoment-booth/internal/models"
 
 	"github.com/gin-gonic/gin"
-	"gorm.io/driver/sqlite"
+	"github.com/glebarez/sqlite"
 	"gorm.io/gorm"
 )
 
@@ -25,7 +25,7 @@ func (s *Server) Init() error {
 	}
 	s.db = db
 
-	if err := s.db.AutoMigrate(&models.Order{}); err != nil {
+	if err := s.db.AutoMigrate(&models.Order{}, &models.QRCode{}); err != nil {
 		return fmt.Errorf("failed to auto migrate: %w", err)
 	}
 

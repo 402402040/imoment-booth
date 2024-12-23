@@ -41,6 +41,7 @@ func (s *Server) Run() error {
 	api := s.engine.Group("/api")
 	api.POST("/create_order", s.CreateOrder)
 	api.GET("/avaliable_order_time", s.GetAvaliableOrderTime)
+	api.GET("/qrcode/:id", s.GetQRcode)
 
 	return s.engine.Run(":8080")
 }

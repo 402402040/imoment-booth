@@ -8,7 +8,7 @@ export const Navbar = () => {
       <div className="logo">
         <img src={logo} alt="" />
       </div>
-      <nav>
+      <nav style={{marginLeft: "25px"}}>
         <div style={{ zIndex: 1 }}>
           <Link to="/">服務介紹</Link>
         </div>

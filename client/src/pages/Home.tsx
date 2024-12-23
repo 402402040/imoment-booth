@@ -40,7 +40,7 @@ export const Home = (props: {}) => {
           </div>
           <p>
             劇場級隔音效果，高級車等級使用隔音膠 <br />
-            及雙層呂蜂窩結構
+            及雙層鋁蜂窩結構
           </p>
         </div>
         <div className="bg-img_item">

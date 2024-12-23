@@ -64,7 +64,7 @@ export const OrderDetail = ({
     }
     setLoading(false);
   };
-
+  console.log(orderInfo);
   return (
     <>
       <div className="top-bg-circle">
@@ -138,8 +138,8 @@ export const OrderDetail = ({
 
             <Form.Item<OrderInfo> label="使用人數" name="number_of_person">
               <Radio.Group disabled>
-                <Radio value="1">1人</Radio>
-                <Radio value="2">2人</Radio>
+                <Radio value={1}>1人</Radio>
+                <Radio value={2}>2人</Radio>
               </Radio.Group>
             </Form.Item>
 

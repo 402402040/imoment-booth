@@ -230,6 +230,8 @@ export const OrderTimePicker = ({
         <button
           className="comfirm-button"
           onClick={() => {
+            console.log("st",startTime)
+            console.log("et",endTime)
             if (startTime === null || endTime === null) {
               messageApi.open({
                 type: "warning",
@@ -237,7 +239,6 @@ export const OrderTimePicker = ({
               });
               return;
             }
-
             onFinish(orderDate, startTime, endTime);
           }}
         >
@@ -276,5 +277,5 @@ function isSelect(
 
 function getNowIndex(): number {
   const now = new Date();
-  return now.getHours() * 2 + (now.getMinutes() === 30 ? 1 : 0);
+  return now.getHours() * 2 + (now.getMinutes() > 0 ? 1 : 0);
 }

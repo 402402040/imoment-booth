@@ -32,7 +32,7 @@ export const UserInfoForm = ({ userInfo, onFinish }: UserInfoFormProps) => {
           wrapperCol={{ span: 16 }}
           initialValues={{ ...userInfo, remember: true }}
           onFinish={onFinish}
-          onFinishFailed={() => console.log("failed")}
+          onFinishFailed={(errorInfo) => console.log("Failed:", errorInfo)}
           autoComplete="off"
           labelAlign="left"
         >
@@ -111,7 +111,14 @@ export const UserInfoForm = ({ userInfo, onFinish }: UserInfoFormProps) => {
           <Form.Item<UserInfo>
             label="使用人數"
             name="numberOfPerson"
-            rules={[{ required: true, message: "請輸入您的使用人數！" }]}
+            rules={[
+              {
+                validator: (_, value) =>
+                  value === 1 || value === 2
+                    ? Promise.resolve()
+                    : Promise.reject(new Error("請選擇有效的使用人數！")),
+              },
+            ]}
           >
             <Radio.Group>
               <Radio value={1}>1人</Radio>

@@ -73,7 +73,7 @@ func (s *Server) GetAvaliableOrderTime(c *gin.Context) {
 	}
 
 	for _, order := range orders {
-		for i := order.OrderStartTime; i < order.OrderEndTime; i++ {
+		for i := order.OrderStartTime; i <= order.OrderEndTime+1; i++ {
 			avaliableTime[i] = false
 		}
 	}
@@ -95,7 +95,7 @@ func createQRcodeContent(order models.Order) string {
 
 func getReserveTime(st, et int) string {
 	stFormat, _ := indexToTime(st)
-	etFormat, _ := indexToTime(et)
+	etFormat, _ := indexToTime(et + 1)
 	return fmt.Sprintf("%s ~ %s", stFormat, etFormat)
 }
 
@@ -109,7 +109,7 @@ func indexToTime(index int) (string, error) {
 	minutes := (index % 2) * 30
 
 	// Format the time as HH:mm:ss
-	return fmt.Sprintf("%02d:%02d:00", hours, minutes), nil
+	return fmt.Sprintf("%02d:%02d", hours, minutes), nil
 }
 
 func (s *Server) GetQRcode(c *gin.Context) {

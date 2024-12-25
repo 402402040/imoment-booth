@@ -19,8 +19,8 @@ var password = "uqsysmhvezjkeplk"
 
 func (m *MailBody) SendMail() error {
 	to := []string{m.Email}
-
-	subject := "Subject: 預約成功通知"
+	cc := []string{"service@fateeternal.com"}
+	subject := "Subject: 【i清靜】智慧多元應用艙-林口實證場域預約成功通知信\n"
 	body := fmt.Sprintf(`
 			<!DOCTYPE html>
 			<html>
@@ -49,13 +49,16 @@ func (m *MailBody) SendMail() error {
 
 	message := "MIME-Version: 1.0\n" +
 		"Content-Type: text/html; charset=\"UTF-8\"\n" +
+		"To: " + m.Email + "\n" +
+		"CC: " + cc[0] + "\n" +
 		subject + body
 
 	smtpHost := "smtp.gmail.com"
 	smtpPort := "587"
 
 	auth := smtp.PlainAuth("", from, password, smtpHost)
-	err := smtp.SendMail(smtpHost+":"+smtpPort, auth, from, to, []byte(message))
+	allRecipients := append(to, cc...)
+	err := smtp.SendMail(smtpHost+":"+smtpPort, auth, from, allRecipients, []byte(message))
 	if err != nil {
 		return err
 	}

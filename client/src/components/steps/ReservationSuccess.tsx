@@ -22,7 +22,7 @@ export const ReservationSuccess = (props: { qrCodeUrl: string }) => {
               <br />
               本服務同時亦將QRcode寄送至
               <br />
-              您填寫的E-mail，請前往確認。
+              若您預約完成後，未在收件匣收到您的預約通知信，請檢查您的電子信箱中的垃圾信件匣，看信件是否在垃圾信件匣中，並將其設定為非垃圾郵件。
               <br />
             </p>
           </div>
@@ -45,7 +45,7 @@ export const ReservationSuccess = (props: { qrCodeUrl: string }) => {
       <div className="booth-info-container">
         <div className="booth-text-info-container">
           <div>
-            <img src={boothLogo} alt="Booth Logo" />
+            <img style={{ width: "75%" }} src={boothLogo} alt="Booth Logo" />
           </div>
           <p className="booth-slogan">
             專業認證 業界第一<br />

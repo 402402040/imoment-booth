@@ -89,7 +89,7 @@ h2 {
 @media screen and (max-width: 640px) {
   .contact-info {
     top: 60%;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 32px;
   }
 

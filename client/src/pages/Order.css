@@ -128,11 +128,13 @@ h2 {
 }
 
 .comfirm-button {
+  color: white;
   background-color: #eee058;
   border: 2px #eee058 solid;
 }
 
 .cancel-button {
+  color: black;
   border: 2px #000 solid;
 }
 

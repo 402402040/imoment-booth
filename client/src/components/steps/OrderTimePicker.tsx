@@ -230,16 +230,17 @@ export const OrderTimePicker = ({
         <button
           className="comfirm-button"
           onClick={() => {
-            console.log("st",startTime)
-            console.log("et",endTime)
-            if (startTime === null || endTime === null) {
+            if (startTime === null) {
               messageApi.open({
                 type: "warning",
                 content: "請選取要租借的時間範圍！",
               });
               return;
             }
-            onFinish(orderDate, startTime, endTime);
+            const updatedEndTime = endTime === null ? startTime : endTime;
+            console.log("st",startTime)
+            console.log("et",endTime)
+            onFinish(orderDate, startTime, updatedEndTime);
           }}
         >
           下一步
